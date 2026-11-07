@@ -1,8 +1,7 @@
-"""[Docstring del módulo: una sola línea que diga qué hace el programa.]"""
-
+"""Genera la ficha de datos técnicos de una aplicación móvil."""
+import sys
+from decimal import ROUND_HALF_UP, Decimal
 from typing import Final
-
-# Añadid aquí las importaciones que necesitéis.
 
 # ---------------------------------------------------------------------------
 # Datos de la aplicación. Sustituid los del ejemplo APP-00 por los vuestros.
@@ -30,11 +29,45 @@ PENDIENTE: Final[str] = "  (opción pendiente de implementar)"
 # Constantes de la pareja. Todo valor fijo del programa va aquí, con nombre.
 # ---------------------------------------------------------------------------
 ANCHO: Final[int] = 44
+ANCHO_ETIQUETA: Final[int] = 18
+ANCHO_VALOR: Final[int] = 14
+
+COMISION: Final[float] = 0.15
+
+BYTES_MB: Final[int] = 10 ** 6
+BYTES_MIB: Final[int] = 2 ** 20
+PORCENTAJE: Final[int] = 100
+
+BITS_MENOR: Final[int] = 8
+BITS_MAYOR: Final[int] = 16
+MASCARA_8_BITS: Final[int] = 0xFF
+
+PERMISO_INTERNET: Final[int] = 0b0000001
+PERMISO_NOTIFICACIONES: Final[int] = 0b0000010
+PERMISO_CAMARA: Final[int] = 0b0000100
+PERMISO_UBICACION: Final[int] = 0b0001000
+PERMISO_CONTACTOS: Final[int] = 0b0010000
+PERMISO_MICROFONO: Final[int] = 0b0100000
+PERMISO_ALMACENAMIENTO: Final[int] = 0b1000000
+CIFRAS_PERMISOS: Final[int] = 7
+
+DESPLAZ_ROJO: Final[int] = 16
+DESPLAZ_VERDE: Final[int] = 8
+DESPLAZ_ALFA: Final[int] = 24
+OPACIDAD_MAXIMA: Final[int] = 255
 
 
 # ---------------------------------------------------------------------------
 # Funciones auxiliares de la pareja. Al menos una, usada en varias opciones.
 # ---------------------------------------------------------------------------
+def fila(etiqueta: str, valor: str) -> str:
+    """Devuelve una fila con la etiqueta alineada y su valor."""
+    return f"{etiqueta + ':':<{ANCHO_ETIQUETA}}{valor}"
+
+
+def separador(caracter: str) -> str:
+    """Devuelve una línea de ANCHO caracteres repitiendo el carácter."""
+    return caracter * ANCHO
 
 
 # ---------------------------------------------------------------------------
