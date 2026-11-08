@@ -180,8 +180,21 @@ def opcion_6_color() -> None:
 
 
 def opcion_7_tipos() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """ Muestra el tipo y el valor de ocho datos con conversiones """
+    media = valoracion_media() # int/int da de resultado un float
+    pide_camara = (PERMISOS & PERMISO_CAMARA) != 0  #devuelve boleano
+    texto_descargas = str(DESCARGAS)  
+    ingresos_brutos = DESCARGAS * PRECIO
+    codigo = ((VERSION_MAYOR << BITS_MAYOR) | (VERSION_MENOR << BITS_MENOR) | VERSION_PARCHE)   
+    print("TIPOS DE DATOS")
+    print(fila_tipo("NOMBRE", NOMBRE))
+    print(fila_tipo("DESCARGAS", DESCARGAS))
+    print(fila_tipo("PRECIO", PRECIO))
+    print(fila_tipo("media", media))
+    print(fila_tipo("pide_camara", pide_camara))
+    print(fila_tipo("texto_descargas", texto_descargas))
+    print(fila_tipo("ingresos_brutos", ingresos_brutos))
+    print(fila_tipo("codigo", codigo))
 
 
 def opcion_8_redondeo() -> None:
