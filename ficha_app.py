@@ -80,7 +80,7 @@ def separador(caracter: str) -> str:
     return caracter * ANCHO
 
 
-def fila_canal(nombre: str, canal: int) -> str: 
+def fila_canal(nombre: str, canal: int) -> str:
     """ Devuelve una fila de canal de color: decimal, binario y hexadecimal"""
     decimal = f"{canal:<{ANCHO_ETIQUETA}}"
     binario = f"{canal:0{BITS_MENOR}b}"
@@ -88,14 +88,15 @@ def fila_canal(nombre: str, canal: int) -> str:
     return fila(nombre, f"{decimal}{binario} {hexadecimal}")
 
 
-def fila_tipo(nombre:str, valor:object) -> str: 
+def fila_tipo(nombre: str, valor: object) -> str:
     """ Devuelve una fila con el nombre, el tipo (type) y el valor """
     tipo = str(type(valor))
-    return f"{nombre + ':' :<{ANCHO_ETIQUETA}}{tipo:<{ANCHO_TIPO}}{valor}"
+    return f"{nombre + ':':<{ANCHO_ETIQUETA}}{tipo:<{ANCHO_TIPO}}{valor}"
 
 
 def valoracion_media() -> float:
-    """ Devuelve la valoracion media --> Suma de estrellas entre las valoraciones """
+    """ Devuelve la valoracion media -->
+    Suma de estrellas entre las valoraciones """
     return ESTRELLAS / VALORACIONES
 
 
@@ -180,12 +181,13 @@ def opcion_5_permisos() -> None:
 
 
 def opcion_6_color() -> None:
-    """ Descompone el color ARGB del icono en canales y lo da en formato CSS """
+    """ Descompone el color ARGB del icono en canales
+    y lo da en formato CSS """
     alfa = (COLOR_ICONO >> DESPLAZ_ALFA) & MASCARA_8_BITS
     rojo = (COLOR_ICONO >> DESPLAZ_ROJO) & MASCARA_8_BITS
     verde = (COLOR_ICONO >> DESPLAZ_VERDE) & MASCARA_8_BITS
     azul = COLOR_ICONO & MASCARA_8_BITS
-    opacidad = alfa / OPACIDAD_MAXIMA *PORCENTAJE
+    opacidad = alfa / OPACIDAD_MAXIMA * PORCENTAJE
     css = f"#{rojo:0{CIFRAS_CANAL}X}{verde:0{CIFRAS_CANAL}X}" \
         f"{azul:0{CIFRAS_CANAL}X}"
     print("COLOR DEL ICONO")
@@ -199,11 +201,12 @@ def opcion_6_color() -> None:
 
 def opcion_7_tipos() -> None:
     """ Muestra el tipo y el valor de ocho datos con conversiones """
-    media = valoracion_media() # int/int da de resultado un float
-    pide_camara = (PERMISOS & PERMISO_CAMARA) != 0  #devuelve boleano
-    texto_descargas = str(DESCARGAS)  
+    media = valoracion_media()  # int/int da de resultado un float
+    pide_camara = (PERMISOS & PERMISO_CAMARA) != 0  # devuelve boleano
+    texto_descargas = str(DESCARGAS)
     ingresos_brutos = DESCARGAS * PRECIO
-    codigo = ((VERSION_MAYOR << BITS_MAYOR) | (VERSION_MENOR << BITS_MENOR) | VERSION_PARCHE)   
+    codigo = ((VERSION_MAYOR << BITS_MAYOR) |
+              (VERSION_MENOR << BITS_MENOR) | VERSION_PARCHE)
     print("TIPOS DE DATOS")
     print(fila_tipo("NOMBRE", NOMBRE))
     print(fila_tipo("DESCARGAS", DESCARGAS))
@@ -246,8 +249,10 @@ def opcion_9_ficha() -> None:
 
 
 def opcion_10_acerca_de() -> None:
-    """ Muestra el docstring del módulo, version, autores y versión de python """
-    python = (f"{sys.version_info.major}.{sys.version_info.minor}" f".{sys.version_info.micro}")
+    """ Muestra el docstring del módulo, version,
+    autores y versión de python """
+    python = (f"{sys.version_info.major}.{sys.version_info.minor}"
+              f".{sys.version_info.micro}")
     print("ACERCA DE")
     print(__doc__)
     print(fila("Version", VERSION_PROGRAMA))
