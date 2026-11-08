@@ -74,8 +74,12 @@ def separador(caracter: str) -> str:
 # Las diez opciones. Sustituid el docstring y el print(PENDIENTE).
 # ---------------------------------------------------------------------------
 def opcion_1_identificacion() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """Muestra la identificación de nuestra app móvil."""
+    version = f"{VERSION_MAYOR}.{VERSION_MENOR}.{VERSION_PARCHE}"
+    print(fila("Código", CODIGO))
+    print(fila("Nombre", NOMBRE))
+    print(fila("Paquete", PAQUETE))
+    print(fila("Versión", version))
 
 
 def opcion_2_tamano() -> None:
