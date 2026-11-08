@@ -113,13 +113,26 @@ def opcion_1_identificacion() -> None:
 
 
 def opcion_2_tamano() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """Muestra el tamaño del APK en B, MB, MiB y la diferencia"""
+    megabytes = TAMANO_APK / BYTES_MB
+    mebibytes = TAMANO_APK / BYTES_MIB
+    diferencia = (megabytes - mebibytes) / megabytes * PORCENTAJE
+    print(fila("Bytes", f"{TAMANO_APK:>{ANCHO_VALOR}} B"))
+    print(fila("En la tienda", f"{megabytes:>{ANCHO_VALOR}.2f} MB"))
+    print(fila("En el móvil", f"{mebibytes:>{ANCHO_VALOR}.2f} MiB"))
+    print(fila("Diferencia", f"{diferencia:>{ANCHO_VALOR}.1f} %"))
 
 
 def opcion_3_ingresos() -> None:
     """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    ingresos_brutos = DESCARGAS * PRECIO
+    comision_tienda = ingresos_brutos * COMISION
+    ingresos_netos = ingresos_brutos - COMISION
+    print(fila("Descargas", f"{DESCARGAS:>{ANCHO_VALOR}} uds"))
+    print(fila("Precio", f"{PRECIO:>{ANCHO_VALOR}.2f} €"))
+    print(fila("Ingresos brutos", f"{ingresos_brutos:>{ANCHO_VALOR}.2f} €"))
+    print(fila("Comisión tienda", f"{comision_tienda:>{ANCHO_VALOR}.2f} €"))
+    print(fila("Ingresos netos", f"{ingresos_brutos:>{ANCHO_VALOR}.2f} €"))
 
 
 def opcion_4_version() -> None:
