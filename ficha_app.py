@@ -3,7 +3,8 @@ import sys
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Final
 
-# ---------------------------------------------------------------------------1----------------------------------
+# --------------------------------------------------------------------------------------------------------------
+
 CODIGO: Final[str] = "APP-07"
 NOMBRE: Final[str] = "Rutas en Bici"
 PAQUETE: Final[str] = "es.deportes.rutasbici"
