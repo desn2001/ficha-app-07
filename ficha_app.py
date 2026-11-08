@@ -78,26 +78,29 @@ def separador(caracter: str) -> str:
     """Devuelve una línea de ANCHO caracteres repitiendo el carácter."""
     return caracter * ANCHO
 
-def fila_canal(nombre: str, canal: int) -> str:
+
+def fila_canal(nombre: str, canal: int) -> str: 
     """ Devuelve una fila de canal de color: decimal, binario y hexadecimal"""
     decimal = f"{canal:<{ANCHO_ETIQUETA}}"
     binario = f"{canal:0{BITS_MENOR}b}"
     hexadecimal = f"{canal:0{CIFRAS_CANAL}x}"
     return fila(nombre, f"{decimal}{binario} {hexadecimal}")
 
-def fila_tipo(nombre:str, valor:object) -> str:
+
+def fila_tipo(nombre:str, valor:object) -> str: 
     """ Devuelve una fila con el nombre, el tipo (type) y el valor """
     tipo = str(type(valor))
     return f"{nombre + ':' :<{ANCHO_ETIQUETA}}{tipo:<{ANCHO_TIPO}}{valor}"
+
 
 def valoracion_media() -> float:
     """ Devuelve la valoracion media --> Suma de estrellas entre las valoraciones """
     return ESTRELLAS / VALORACIONES
 
+
 def redondeo_escolar(valor: Decimal, cuanto: Decimal) -> Decimal:
     """ Redondea con ROUND_HALF_UP: Los empates siempre suben """
     return valor.quantize(cuanto, rounding=ROUND_HALF_UP)
-
 
 
 # ---------------------------------------------------------------------------
@@ -146,8 +149,21 @@ def opcion_5_permisos() -> None:
 
 
 def opcion_6_color() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """ Descompone el color ARGB del icono en canales y lo da en formato CSS """
+    alfa = (COLOR_ICONO >> DESPLAZ_ALFA) & MASCARA_8_BITS
+    rojo = (COLOR_ICONO >> DESPLAZ_ROJO) & MASCARA_8_BITS
+    verde = (COLOR_ICONO >> DESPLAZ_VERDE) & MASCARA_8_BITS
+    azul = COLOR_ICONO & MASCARA_8_BITS
+    opacidad = alfa / OPACIDAD_MAXIMA *PORCENTAJE
+    css = f"#{rojo:0{CIFRAS_CANAL}X}{verde:0{CIFRAS_CANAL}X}" \
+        f"{azul:0{CIFRAS_CANAL}X}"
+    print("COLOR DEL ICONO")
+    print(fila("ARGB", f"0x{COLOR_ICONO:0{CIFRAS_ARGB}X}"))
+    print(fila_canal("Rojo", rojo))
+    print(fila_canal("Verde", verde))
+    print(fila_canal("Azul", azul))
+    print(fila("Opacidad", f"{opacidad:.{DECIMALES}f} %"))
+    print(fila("Para CSS", css))
 
 
 def opcion_7_tipos() -> None:
