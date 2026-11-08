@@ -3,15 +3,32 @@ import sys
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Final
 
-# ---------------------------------------------------------------------------1----------------------------------
+# ---------------------------------------------------------------------------
+# Datos de la aplicación. Sustituid los del ejemplo APP-00 por los vuestros.
+# ---------------------------------------------------------------------------
+CODIGO: Final[str] = "APP-07"
+NOMBRE: Final[str] = "Rutas en Bici"
+PAQUETE: Final[str] = "es.deportes.rutasbici"
+VERSION_MAYOR, VERSION_MENOR, VERSION_PARCHE = 1, 0, 27
+TAMANO_APK: Final[int] = 73_400_320          # bytes
+DESCARGAS: Final[int] = 3_900
+PRECIO: Final[float] = 3.99                  # euros, IVA incluido
+VALORACIONES: Final[int] = 160
+ESTRELLAS: Final[int] = 620                  # suma de todas las valoraciones
+PERMISOS: Final[int] = 0b0101011
+COLOR_ICONO: Final[int] = 0xFF558B2F         # ARGB
+
+# ---------------------------------------------------------------------------
+# Datos del programa. Solo hay que cambiar AUTORES.
+# ---------------------------------------------------------------------------
 VERSION_PROGRAMA: Final[str] = "1.0.0"
-AUTORES: Final[str] = "[desn2001] · [jufraa]"
+AUTORES: Final[str] = "[usuario] · [usuario]"
 PENDIENTE: Final[str] = "  (opción pendiente de implementar)"
 
 # ---------------------------------------------------------------------------
 # Constantes de la pareja. Todo valor fijo del programa va aquí, con nombre.
 # ---------------------------------------------------------------------------
-ANCHO: Final[int] = 60
+ANCHO: Final[int] = 44
 ANCHO_ETIQUETA: Final[int] = 18
 ANCHO_VALOR: Final[int] = 14
 
@@ -63,7 +80,7 @@ def separador(caracter: str) -> str:
     return caracter * ANCHO
 
 
-def fila_canal(nombre: str, canal: int) -> str:
+def fila_canal(nombre: str, canal: int) -> str: 
     """ Devuelve una fila de canal de color: decimal, binario y hexadecimal"""
     decimal = f"{canal:<{ANCHO_ETIQUETA}}"
     binario = f"{canal:0{BITS_MENOR}b}"
@@ -71,15 +88,14 @@ def fila_canal(nombre: str, canal: int) -> str:
     return fila(nombre, f"{decimal}{binario} {hexadecimal}")
 
 
-def fila_tipo(nombre: str, valor: object) -> str:
+def fila_tipo(nombre:str, valor:object) -> str: 
     """ Devuelve una fila con el nombre, el tipo (type) y el valor """
     tipo = str(type(valor))
-    return f"{nombre + ':':<{ANCHO_ETIQUETA}}{tipo:<{ANCHO_TIPO}}{valor}"
+    return f"{nombre + ':' :<{ANCHO_ETIQUETA}}{tipo:<{ANCHO_TIPO}}{valor}"
 
 
 def valoracion_media() -> float:
-    """ Devuelve la valoracion media -->
-    Suma de estrellas entre las valoraciones """
+    """ Devuelve la valoracion media --> Suma de estrellas entre las valoraciones """
     return ESTRELLAS / VALORACIONES
 
 
@@ -164,13 +180,12 @@ def opcion_5_permisos() -> None:
 
 
 def opcion_6_color() -> None:
-    """ Descompone el color ARGB del icono en canales
-    y lo da en formato CSS """
+    """ Descompone el color ARGB del icono en canales y lo da en formato CSS """
     alfa = (COLOR_ICONO >> DESPLAZ_ALFA) & MASCARA_8_BITS
     rojo = (COLOR_ICONO >> DESPLAZ_ROJO) & MASCARA_8_BITS
     verde = (COLOR_ICONO >> DESPLAZ_VERDE) & MASCARA_8_BITS
     azul = COLOR_ICONO & MASCARA_8_BITS
-    opacidad = alfa / OPACIDAD_MAXIMA * PORCENTAJE
+    opacidad = alfa / OPACIDAD_MAXIMA *PORCENTAJE
     css = f"#{rojo:0{CIFRAS_CANAL}X}{verde:0{CIFRAS_CANAL}X}" \
         f"{azul:0{CIFRAS_CANAL}X}"
     print("COLOR DEL ICONO")
@@ -183,64 +198,23 @@ def opcion_6_color() -> None:
 
 
 def opcion_7_tipos() -> None:
-    """ Muestra el tipo y el valor de ocho datos con conversiones """
-    media = valoracion_media()  # int/int da de resultado un float
-    pide_camara = (PERMISOS & PERMISO_CAMARA) != 0  # devuelve boleano
-    texto_descargas = str(DESCARGAS)
-    ingresos_brutos = DESCARGAS * PRECIO
-    codigo = ((VERSION_MAYOR << BITS_MAYOR) |
-              (VERSION_MENOR << BITS_MENOR) | VERSION_PARCHE)
-    print("TIPOS DE DATOS")
-    print(fila_tipo("NOMBRE", NOMBRE))
-    print(fila_tipo("DESCARGAS", DESCARGAS))
-    print(fila_tipo("PRECIO", PRECIO))
-    print(fila_tipo("media", media))
-    print(fila_tipo("pide_camara", pide_camara))
-    print(fila_tipo("texto_descargas", texto_descargas))
-    print(fila_tipo("ingresos_brutos", ingresos_brutos))
-    print(fila_tipo("codigo", codigo))
+    """[Docstring: qué hace esta opción.]"""
+    print(PENDIENTE)
 
 
 def opcion_8_redondeo() -> None:
-    """ Compara round() con el redondeo escolar (Decimal y ROUND_HALF_UP) """
-    media = valoracion_media()
-    exacta = Decimal(str(media))
-    escolar_1 = redondeo_escolar(exacta, CUANTO_1_DEC)
-    escolar_2 = redondeo_escolar(exacta, CUANTO_2_DEC)
-    print("REDONDEO DE LA VALORACION MEDIA")
-    print(fila("Valor exacto", str(media)))
-    print(fila("Round(), 1 dec", str(round(media, DECIMALES))))
-    print(fila("Escolar, 1 dec", str(escolar_1)))
-    print(fila("round(), 2 dec", str(round(media, DECIMALES_EXTRA))))
-    print(fila("Escolar, 2d dec", str(escolar_2)))
+    """[Docstring: qué hace esta opción.]"""
+    print(PENDIENTE)
 
 
 def opcion_9_ficha() -> None:
-    """ Muestra la ficha completa reutilizando las opciones 1 a 4 """
-    titulo = "FICHA DE LA APLICACIÓN"
-    print(separador("="))
-    print(f"{titulo:^{ANCHO}}")
-    print(separador("="))
-    opcion_1_identificacion()
-    print(separador("-"))
-    opcion_2_tamano()
-    print(separador("-"))
-    opcion_3_ingresos()
-    print(separador("-"))
-    opcion_4_version()
-    print(separador("="))
+    """[Docstring: qué hace esta opción.]"""
+    print(PENDIENTE)
 
 
 def opcion_10_acerca_de() -> None:
-    """ Muestra el docstring del módulo, version,
-    autores y versión de python """
-    python = (f"{sys.version_info.major}.{sys.version_info.minor}"
-              f".{sys.version_info.micro}")
-    print("ACERCA DE")
-    print(__doc__)
-    print(fila("Version", VERSION_PROGRAMA))
-    print(fila("Autores", AUTORES))
-    print(fila("Python", python))
+    """[Docstring: qué hace esta opción.]"""
+    print(PENDIENTE)
 
 
 # ---------------------------------------------------------------------------
