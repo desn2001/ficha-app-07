@@ -95,7 +95,14 @@ def opcion_2_tamano() -> None:
 
 def opcion_3_ingresos() -> None:
     """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    ingresos_brutos = DESCARGAS * PRECIO
+    comision_tienda = ingresos_brutos * COMISION
+    ingresos_netos = ingresos_brutos - COMISION
+    print(fila("Descargas", f"{DESCARGAS:>{ANCHO_VALOR}} uds"))
+    print(fila("Precio", f"{PRECIO:>{ANCHO_VALOR}.2f} €"))
+    print(fila("Ingresos brutos", f"{ingresos_brutos:>{ANCHO_VALOR}.2f} €"))
+    print(fila("Comisión tienda", f"{comision_tienda:>{ANCHO_VALOR}.2f} €"))
+    print(fila("Ingresos netos", f"{ingresos_brutos:>{ANCHO_VALOR}.2f} €"))
 
 
 def opcion_4_version() -> None:
