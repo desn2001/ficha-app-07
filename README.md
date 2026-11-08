@@ -8,29 +8,29 @@ varias comprobaciones sobre tipos y redondeo.
 
 **Módulo:** IC44 — Fundamentos de programación en Python
 **Unidad:** 1 — Estructura de un programa y elementos del lenguaje
-**Pareja:** [número]
-**Autores:** [usuario] · [usuario]
+**Pareja:** [07]
+**Autores:** [desn2001] · [Jufraa]
 
 ## Aplicación descrita
 
 | Dato | Valor |
 |---|---|
-| Código | [APP-XX] |
-| Nombre | [nombre] |
-| Paquete | [paquete] |
-| Versión | [mayor.menor.parche] |
-| Tamaño del APK | [bytes] |
-| Descargas y precio | [descargas · precio] |
+| Código | [APP-07] |
+| Nombre | [Rutas en Bici] |
+| Paquete | [es.deportes.rutasbici] |
+| Versión | [1.0.27] |
+| Tamaño del APK | [73400320] |
+| Descargas y precio | [3900 · 3,99€] |
 
 ## Ejecución desde Docker Hub
 
 No hace falta descargar el repositorio ni tener Python instalado. Solo Docker.
 
 ```bash
-docker run --rm [usuario]/ficha-app-xx:1.0.0
+docker run --rm -- pull always desn2001/ficha-app-07:1.0.0
 ```
 
-Página de la imagen: https://hub.docker.com/r/[usuario]/ficha-app-xx
+Página de la imagen: https://hub.docker.com/r/desn2001/ficha-app-07
 
 ## Ejecución en local
 
