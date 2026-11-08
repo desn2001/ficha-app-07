@@ -23,7 +23,7 @@ PENDIENTE: Final[str] = "  (opción pendiente de implementar)"
 # ---------------------------------------------------------------------------
 # Constantes de la pareja. Todo valor fijo del programa va aquí, con nombre.
 # ---------------------------------------------------------------------------
-ANCHO: Final[int] = 60
+ANCHO: Final[int] = 40
 ANCHO_ETIQUETA: Final[int] = 18
 ANCHO_VALOR: Final[int] = 14
 

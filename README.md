@@ -1,4 +1,4 @@
-# Ficha de la aplicación APP-XX
+# Ficha de la aplicación APP-07
 
 <!-- Sustituid todo lo que aparece entre corchetes y borrad estos comentarios. -->
 
