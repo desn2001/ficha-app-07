@@ -216,8 +216,17 @@ def opcion_7_tipos() -> None:
 
 
 def opcion_8_redondeo() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """ Compara round() con el redondeo escolar (Decimal y ROUND_HALF_UP) """
+    media = valoracion_media()
+    exacta = Decimal(str(media))
+    escolar_1 = redondeo_escolar(exacta, CUANTO_1_DEC)
+    escolar_2 = redondeo_escolar(exacta, CUANTO_2_DEC)
+    print("REDONDEO DE LA VALORACION MEDIA")
+    print(fila("Valor exacto", str(media)))
+    print(fila("Round(), 1 dec", str(round(media, DECIMALES))))
+    print(fila("Escolar, 1 dec", str(escolar_1)))
+    print(fila("round(), 2 dec", str(round(media, DECIMALES_EXTRA))))
+    print(fila("Escolar, 2d dec", str(escolar_2)))
 
 
 def opcion_9_ficha() -> None:
