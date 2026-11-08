@@ -3,24 +3,7 @@ import sys
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Final
 
-# ---------------------------------------------------------------------------
-# Datos de la aplicación. Sustituid los del ejemplo APP-00 por los vuestros.
-# ---------------------------------------------------------------------------
-CODIGO: Final[str] = "APP-07"
-NOMBRE: Final[str] = "Rutas en Bici"
-PAQUETE: Final[str] = "es.deportes.rutasbici"
-VERSION_MAYOR, VERSION_MENOR, VERSION_PARCHE = 2, 5, 13
-TAMANO_APK: Final[int] = 48_734_208          # bytes
-DESCARGAS: Final[int] = 12_500
-PRECIO: Final[float] = 1.99                  # euros, IVA incluido
-VALORACIONES: Final[int] = 400
-ESTRELLAS: Final[int] = 1_700                # suma de todas las valoraciones
-PERMISOS: Final[int] = 0b0001011
-COLOR_ICONO: Final[int] = 0xFF3A7BD5         # ARGB
-
-# ---------------------------------------------------------------------------
-# Datos del programa. Solo hay que cambiar AUTORES.
-# ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------1----------------------------------
 VERSION_PROGRAMA: Final[str] = "1.0.0"
 AUTORES: Final[str] = "[desn2001] · [jufraa]"
 PENDIENTE: Final[str] = "  (opción pendiente de implementar)"
