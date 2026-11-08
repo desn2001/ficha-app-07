@@ -114,7 +114,7 @@ def opcion_1_identificacion() -> None:
 
 
 def opcion_2_tamano() -> None:
-    """Muestra el tamaño del APK en B, MB, MiB y la diferencia"""
+    """Muestra el tamaño del APK en B, MB, MiB y la diferencia."""
     megabytes = TAMANO_APK / BYTES_MB
     mebibytes = TAMANO_APK / BYTES_MIB
     diferencia = (megabytes - mebibytes) / megabytes * PORCENTAJE
@@ -125,7 +125,7 @@ def opcion_2_tamano() -> None:
 
 
 def opcion_3_ingresos() -> None:
-    """Muestra las descargas y la informacion economica de tienda"""
+    """Muestra las descargas y la informacion economica de tienda."""
     ingresos_brutos = DESCARGAS * PRECIO
     comision_tienda = ingresos_brutos * COMISION
     ingresos_netos = ingresos_brutos - COMISION
@@ -137,7 +137,7 @@ def opcion_3_ingresos() -> None:
 
 
 def opcion_4_version() -> None:
-    """Empaqueta la versión en un entero y la desempaqueta"""
+    """Empaqueta la versión en un entero y la desempaqueta."""
     version = f"{VERSION_MAYOR}.{VERSION_MENOR}.{VERSION_PARCHE}"
     mayor_movido = VERSION_MAYOR << BITS_MAYOR
     menor_movido = VERSION_MENOR << BITS_MENOR
@@ -154,8 +154,26 @@ def opcion_4_version() -> None:
 
 
 def opcion_5_permisos() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """Muestra los permisos de la app y cómo queda sin el de ubicación."""
+    binario = f"{PERMISOS:0{CIFRAS_PERMISOS}b}"
+    pide_internet = (PERMISOS & PERMISO_INTERNET) != 0
+    pide_notif = (PERMISOS & PERMISO_NOTIFICACIONES) != 0
+    pide_camara = (PERMISOS & PERMISO_CAMARA) != 0
+    pide_ubicacion = (PERMISOS & PERMISO_UBICACION) != 0
+    pide_contactos = (PERMISOS & PERMISO_CONTACTOS) != 0
+    pide_micro = (PERMISOS & PERMISO_MICROFONO) != 0
+    pide_almacen = (PERMISOS & PERMISO_ALMACENAMIENTO) != 0
+    sin_ubicacion = PERMISOS & ~PERMISO_UBICACION
+    binario_sin = f"{sin_ubicacion:0{CIFRAS_PERMISOS}b}"
+    print(fila("En binario", f"{binario:>{ANCHO_VALOR}}"))
+    print(fila("Internet", f"{pide_internet:>{ANCHO_VALOR}}"))
+    print(fila("Notificaciones", f"{pide_notif:>{ANCHO_VALOR}}"))
+    print(fila("Cámara", f"{pide_camara:>{ANCHO_VALOR}}"))
+    print(fila("Ubicación", f"{pide_ubicacion:>{ANCHO_VALOR}}"))
+    print(fila("Contactos", f"{pide_contactos:>{ANCHO_VALOR}}"))
+    print(fila("Micrófono", f"{pide_micro:>{ANCHO_VALOR}}"))
+    print(fila("Almacenamiento", f"{pide_almacen:>{ANCHO_VALOR}}"))
+    print(fila("Sin ubicación", f"{binario_sin:>{ANCHO_VALOR}}"))
 
 
 def opcion_6_color() -> None:
