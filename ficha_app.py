@@ -230,8 +230,19 @@ def opcion_8_redondeo() -> None:
 
 
 def opcion_9_ficha() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """ Muestra la ficha completa reutilizando las opciones 1 a 4 """
+    titulo = "FICHA DE LA APLICACIÓN"
+    print(separador("="))
+    print(f"{titulo:^{ANCHO}}")
+    print(separador("="))
+    opcion_1_identificacion()
+    print(separador("-"))
+    opcion_2_tamano()
+    print(separador("-"))
+    opcion_3_ingresos()
+    print(separador("-"))
+    opcion_4_version()
+    print(separador("="))
 
 
 def opcion_10_acerca_de() -> None:
