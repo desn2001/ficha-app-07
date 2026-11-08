@@ -41,6 +41,7 @@ PORCENTAJE: Final[int] = 100
 BITS_MENOR: Final[int] = 8
 BITS_MAYOR: Final[int] = 16
 MASCARA_8_BITS: Final[int] = 0xFF
+CIFRAS_HEX: Final[int] = 6
 
 PERMISO_INTERNET: Final[int] = 0b0000001
 PERMISO_NOTIFICACIONES: Final[int] = 0b0000010
@@ -127,7 +128,7 @@ def opcion_2_tamano() -> None:
 
 
 def opcion_3_ingresos() -> None:
-    """[Docstring: qué hace esta opción.]"""
+    """Muestra las descargas y la informacion economica de tienda"""
     ingresos_brutos = DESCARGAS * PRECIO
     comision_tienda = ingresos_brutos * COMISION
     ingresos_netos = ingresos_brutos - COMISION
@@ -139,8 +140,20 @@ def opcion_3_ingresos() -> None:
 
 
 def opcion_4_version() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """Empaqueta la versión en un entero y la desempaqueta"""
+    version = f"{VERSION_MAYOR}.{VERSION_MENOR}.{VERSION_PARCHE}"
+    mayor_movido = VERSION_MAYOR << BITS_MAYOR
+    menor_movido = VERSION_MENOR << BITS_MENOR
+    version_code = mayor_movido | menor_movido | VERSION_PARCHE
+    hexadecimal = f"0x{version_code:0{CIFRAS_HEX}X}"
+    parche = version_code & MASCARA_8_BITS
+    menor = (version_code >> BITS_MENOR) & MASCARA_8_BITS
+    mayor = (version_code >> BITS_MAYOR) & MASCARA_8_BITS
+    desempaquetado = f"{mayor}.{menor}.{parche}"
+    print(fila("Version", version))
+    print(fila("VersionCode", f"{version_code:>{ANCHO_VALOR}}"))
+    print(fila("En hexadecimal", f"{hexadecimal:>{ANCHO_VALOR}}"))
+    print(fila("Desempaquetado", desempaquetado))
 
 
 def opcion_5_permisos() -> None:
