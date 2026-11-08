@@ -4,6 +4,17 @@ from decimal import ROUND_HALF_UP, Decimal
 from typing import Final
 
 # ---------------------------------------------------------------------------1----------------------------------
+CODIGO: Final[str] = "APP-07"
+NOMBRE: Final[str] = "Rutas en Bici"
+PAQUETE: Final[str] = "es.deportes.rutasbici"
+VERSION_MAYOR, VERSION_MENOR, VERSION_PARCHE = 1, 0, 27
+TAMANO_APK: Final[int] = 73_400_320          # bytes
+DESCARGAS: Final[int] = 3_900
+PRECIO: Final[float] = 3.99                  # euros, IVA incluido
+VALORACIONES: Final[int] = 160
+ESTRELLAS: Final[int] = 620                  # suma de todas las valoraciones
+PERMISOS: Final[int] = 0b0101011
+COLOR_ICONO: Final[int] = 0xFF558B2F         # ARGB
 VERSION_PROGRAMA: Final[str] = "1.0.0"
 AUTORES: Final[str] = "[desn2001] · [jufraa]"
 PENDIENTE: Final[str] = "  (opción pendiente de implementar)"
