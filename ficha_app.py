@@ -6,9 +6,9 @@ from typing import Final
 # ---------------------------------------------------------------------------
 # Datos de la aplicación. Sustituid los del ejemplo APP-00 por los vuestros.
 # ---------------------------------------------------------------------------
-CODIGO: Final[str] = "APP-00"
-NOMBRE: Final[str] = "Agenda Escolar"
-PAQUETE: Final[str] = "es.ieseuropa.agenda"
+CODIGO: Final[str] = "APP-07"
+NOMBRE: Final[str] = "Rutas en Bici"
+PAQUETE: Final[str] = "es.deportes.rutasbici"
 VERSION_MAYOR, VERSION_MENOR, VERSION_PARCHE = 2, 5, 13
 TAMANO_APK: Final[int] = 48_734_208          # bytes
 DESCARGAS: Final[int] = 12_500
@@ -22,13 +22,13 @@ COLOR_ICONO: Final[int] = 0xFF3A7BD5         # ARGB
 # Datos del programa. Solo hay que cambiar AUTORES.
 # ---------------------------------------------------------------------------
 VERSION_PROGRAMA: Final[str] = "1.0.0"
-AUTORES: Final[str] = "[usuario] · [usuario]"
+AUTORES: Final[str] = "[desn2001] · [jufraa]"
 PENDIENTE: Final[str] = "  (opción pendiente de implementar)"
 
 # ---------------------------------------------------------------------------
 # Constantes de la pareja. Todo valor fijo del programa va aquí, con nombre.
 # ---------------------------------------------------------------------------
-ANCHO: Final[int] = 44
+ANCHO: Final[int] = 60
 ANCHO_ETIQUETA: Final[int] = 18
 ANCHO_VALOR: Final[int] = 14
 
@@ -246,8 +246,13 @@ def opcion_9_ficha() -> None:
 
 
 def opcion_10_acerca_de() -> None:
-    """[Docstring: qué hace esta opción.]"""
-    print(PENDIENTE)
+    """ Muestra el docstring del módulo, version, autores y versión de python """
+    python = (f"{sys.version_info.major}.{sys.version_info.minor}" f".{sys.version_info.micro}")
+    print("ACERCA DE")
+    print(__doc__)
+    print(fila("Version", VERSION_PROGRAMA))
+    print(fila("Autores", AUTORES))
+    print(fila("Python", python))
 
 
 # ---------------------------------------------------------------------------
