@@ -56,6 +56,15 @@ DESPLAZ_VERDE: Final[int] = 8
 DESPLAZ_ALFA: Final[int] = 24
 OPACIDAD_MAXIMA: Final[int] = 255
 
+CIFRAS_ARGB: Final[int] = 8
+CIFRAS_CANAL: Final[int] = 2
+ANCHO_DECIMAL: Final[int] = 5
+ANCHO_TIPO: Final[int] = 20
+DECIMALES: Final[int] = 1
+DECIMALES_EXTRA: Final[int] = 2
+CUANTO_1_DEC: Final[Decimal] = Decimal("0.1")
+CUANTO_2_DEC: Final[Decimal] = Decimal("0.2")
+
 
 # ---------------------------------------------------------------------------
 # Funciones auxiliares de la pareja. Al menos una, usada en varias opciones.
@@ -68,6 +77,27 @@ def fila(etiqueta: str, valor: str) -> str:
 def separador(caracter: str) -> str:
     """Devuelve una línea de ANCHO caracteres repitiendo el carácter."""
     return caracter * ANCHO
+
+def fila_canal(nombre: str, canal: int) -> str:
+    """ Devuelve una fila de canal de color: decimal, binario y hexadecimal"""
+    decimal = f"{canal:<{ANCHO_ETIQUETA}}"
+    binario = f"{canal:0{BITS_MENOR}b}"
+    hexadecimal = f"{canal:0{CIFRAS_CANAL}x}"
+    return fila(nombre, f"{decimal}{binario} {hexadecimal}")
+
+def fila_tipo(nombre:str, valor:object) -> str:
+    """ Devuelve una fila con el nombre, el tipo (type) y el valor """
+    tipo = str(type(valor))
+    return f"{nombre + ':' :<{ANCHO_ETIQUETA}}{tipo:<{ANCHO_TIPO}}{valor}"
+
+def valoracion_media() -> float:
+    """ Devuelve la valoracion media --> Suma de estrellas entre las valoraciones """
+    return ESTRELLAS / VALORACIONES
+
+def redondeo_escolar(valor: Decimal, cuanto: Decimal) -> Decimal:
+    """ Redondea con ROUND_HALF_UP: Los empates siempre suben """
+    return valor.quantize(cuanto, rounding=ROUND_HALF_UP)
+
 
 
 # ---------------------------------------------------------------------------
